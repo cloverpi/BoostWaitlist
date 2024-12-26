@@ -297,10 +297,21 @@ general:SetScript("OnShow", Options.GeneralShow)
 playerDB:SetScript("OnShow", Options.PlayerDBShow)
 
 
-InterfaceOptions_AddCategory(about)
 
-InterfaceOptions_AddCategory(general, Options.about)
-InterfaceOptions_AddCategory(playerDB, Options.about)
+if InterfaceOptions_AddCategory then
+	InterfaceOptions_AddCategory(about)
+
+    InterfaceOptions_AddCategory(general, Options.about)
+    InterfaceOptions_AddCategory(playerDB, Options.about)
+else
+	local category, layout = Settings.RegisterCanvasLayoutCategory(about, about.name);
+	local subcategory, layout = Settings.RegisterCanvasLayoutSubcategory(category, general, general.name, general.name);
+    local subcategory2, layout2 = Settings.RegisterCanvasLayoutSubcategory(category, playerDB, playerDB.name, playerDB.name);
+
+    Settings.RegisterAddOnCategory(category);
+
+end
+
 
 
 
