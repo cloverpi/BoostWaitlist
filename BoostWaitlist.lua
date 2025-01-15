@@ -29,12 +29,9 @@ local function eventHandler(self, event, arg1, arg2, ...)
     print(L["addonLoading"])
     Main:Init()
   elseif (event == "CHAT_MSG_WHISPER") then
-   
     if (DB.active) then
-      local msg, sender = arg1, Main:RemoveServerFromName(arg2)
-      
-      if (not Main:IsBlacklist(sender)) then
-        
+      local msg, sender = arg1, Main:RemoveServerFromName(arg2)  
+      if (not Main:IsBlacklist(sender)) then        
         Main:HandleWhisperMessage(msg, sender)
       end
     elseif (DB.inactivereply and DB.inactivereplymsg ~= nil) then
@@ -393,7 +390,7 @@ end
 function Main:HandleAddonOn()
   DB.name = UnitName("player")
   print(L["addonActivated"])
-  print("starting DB")
+  print(L["startingDB"])
   DB.active = true
   Main.groupRoster = {}
   Main:HandleGroupRosterUpdate()

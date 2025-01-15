@@ -1,16 +1,18 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("BoostWaitlist", true)
 
 local addonName, addon = ...
-local Options = addon.Options or {}
+local Options = {}
 -- local Options = _G.BoostWaitlistOptions or {}
 
-local about = CreateFrame("Frame", "BoostWaitlistAboutOptions", InterfaceOptionsFramePanelContainer)
+local about = CreateFrame("Frame", addonName, InterfaceOptionsFramePanelContainer)
 local general = CreateFrame("Frame")
 local playerDB = CreateFrame("Frame")
 
 Options.about = about
 Options.general = general
 Options.playerDB = playerDB
+
+addon.Options = Options
 
 local DB -- assigned during init
 local GUI = addon.GUI
@@ -296,20 +298,17 @@ about:SetScript("OnShow", Options.AboutShow)
 general:SetScript("OnShow", Options.GeneralShow)
 playerDB:SetScript("OnShow", Options.PlayerDBShow)
 
-
-
-if InterfaceOptions_AddCategory then
-	InterfaceOptions_AddCategory(about)
-
-    InterfaceOptions_AddCategory(general, Options.about)
-    InterfaceOptions_AddCategory(playerDB, Options.about)
-else
-	local category, layout = Settings.RegisterCanvasLayoutCategory(about, about.name);
-	local subcategory, layout = Settings.RegisterCanvasLayoutSubcategory(category, general, general.name, general.name);
-    local subcategory2, layout2 = Settings.RegisterCanvasLayoutSubcategory(category, playerDB, playerDB.name, playerDB.name);
+if Settings then
+    local category = Settings.RegisterCanvasLayoutCategory(about, addonName);
+    category.ID = addonName
+	local subcategory = Settings.RegisterCanvasLayoutSubcategory(category, general, general.name, general.name);
+    local subcategory2 = Settings.RegisterCanvasLayoutSubcategory(category, playerDB, playerDB.name, playerDB.name);
 
     Settings.RegisterAddOnCategory(category);
-
+else
+    InterfaceOptions_AddCategory(about)
+    InterfaceOptions_AddCategory(general, Options.about)
+    InterfaceOptions_AddCategory(playerDB, Options.about)
 end
 
 
