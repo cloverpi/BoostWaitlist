@@ -1,4 +1,4 @@
-## Interface: 11307
+## Interface: 11505
 ## Title: BoostWaitlist
 ## Author: Skarrow, Gnerf/SuperFine
 ## Version: 3.1.4
@@ -7,13 +7,14 @@
 
 Libs\LibStub\LibStub.lua
 Libs\StdUi\StdUi.xml
+embeds.xml
 
 Locales\Locales.xml
 
 Utils\SimpleThrottle.lua
 Utils\UIBuilder.lua
 
-embeds.xml
+
 BoostWaitlistDB.lua
 BoostWaitlistGUI.lua
 BoostWaitlist.lua
