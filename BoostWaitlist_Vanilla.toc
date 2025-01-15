@@ -1,19 +1,20 @@
-## Interface: 11307
+## Interface: 11506, 11505
 ## Title: BoostWaitlist
-## Author: Skarrow, Gnerf/SuperFine
-## Version: 3.1.4
+## Author: Skarrow, Gnerf/SuperFine, helmuth99
+## Version: 3.1.5-Beta
 ## Notes: Addon to help boosters manage waitlists and transactions.
 ## SavedVariablesPerCharacter: BoostWaitlistDB
 
 Libs\LibStub\LibStub.lua
 Libs\StdUi\StdUi.xml
+embeds.xml
 
 Locales\Locales.xml
 
 Utils\SimpleThrottle.lua
 Utils\UIBuilder.lua
 
-embeds.xml
+
 BoostWaitlistDB.lua
 BoostWaitlistGUI.lua
 BoostWaitlist.lua

@@ -46,6 +46,7 @@ L["unsupportedCommand"] = function(S)
 end
 L["addonActivated"] = "BoostWaitlist addon activated"
 L["addonDeactivated"] = "BoostWaitlist addon deactivated"
+L["startingDB"] = "BootWaitList starting DB"
 L["requestWaitlist"] = function(T,S)
   return 'Waitlist request for ' .. T ..' from ' .. S
 end

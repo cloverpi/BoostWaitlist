@@ -7,7 +7,6 @@ local DB -- assigned during ADDON_LOADED
 local Main = addon
 local GUI = {}
 local UIBuilder = addon.UIBuilder
--- local TEST = false
 
 addon.GUI = GUI
 
@@ -403,7 +402,11 @@ function GUI:CreateMinimapIcon()
           GUI:ShowToggle()
         elseif (button == "RightButton") then
           if (IsShiftKeyDown()) then
-            InterfaceOptionsFrame_OpenToCategory("BoostWaitlist");
+            if Settings then
+              Settings.OpenToCategory(addonName)
+            else
+              InterfaceOptionsFrame_OpenToCategory(addonName);
+            end
           else
             if (DB.Main.active) then
               Main:HandleAddonOff()
@@ -450,28 +453,6 @@ function GUI:RebuildPlayerlist()
       offline = true,
   })
   end
-  -- if (TEST) then
-  --   cols = {} --!
-  --   cols[1] = {
-  --     name = "Gnerff",
-  --     accountBalance = Main:GetBalance("Gnerff") or 0,
-  --     overrideCharge = Main:GetOverrideDefaultCharge("Gnerff") or DB.Main.cost,
-  --     offline = true,
-  --   }
-  --   cols[2] = {
-  --     name = "Gnerffto",
-  --     accountBalance = Main:GetBalance("Gnerffto") or 0,
-  --     overrideCharge = Main:GetOverrideDefaultCharge("Gnerffto") or DB.Main.cost,
-  --     offline = true,
-  --   }
-  --   cols[3] = {
-  --     name = "Superfine",
-  --     accountBalance = Main:GetBalance("Superfine") or 0,
-  --     overrideCharge = Main:GetOverrideDefaultCharge("Superfine") or DB.Main.cost,
-  --     offline = true,
-  --   }
-  -- end
-  
   players = rows
 end
 
